@@ -38,4 +38,33 @@ public class UserRegistrationTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void givenEmail_WhenProper_ReturnsMessage() throws UserRegistrationException {
+        UserRegistration user = new UserRegistration();
+        boolean result = user.emailId("bhushan@gmail.com");
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void givenEmail_WhenNotProper_ThrowsException() {
+        UserRegistration user = new UserRegistration();
+        try {
+            boolean result = user.lastName("bhushan@mahajan@gmail.com");
+            Assertions.assertFalse(result);
+        } catch (UserRegistrationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void givenEmail_WhenNotProper_ThrowsException1() {
+        UserRegistration user = new UserRegistration();
+        try {
+            boolean result = user.lastName("bhushan.@mahajan@gmail.co.in");
+            Assertions.assertFalse(result);
+        } catch (UserRegistrationException e) {
+            e.printStackTrace();
+        }
+    }
 }
