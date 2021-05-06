@@ -2,7 +2,7 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
-    static  final String namePattern = "^[A-Z][a-z]{3,30}$";
+    static final String namePattern = "^[A-Z][a-z]{3,30}$";
 
     public boolean firstName(String name) throws UserRegistrationException {
 
