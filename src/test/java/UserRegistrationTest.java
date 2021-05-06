@@ -4,14 +4,43 @@ import org.junit.jupiter.api.Test;
 public class UserRegistrationTest {
 
     @Test
-    void givenFirstName_WhileProper_ReturnsMessage() throws UserRegistrationException {
+    public void givenFirstName_WhileProper_ReturnsMessage() throws UserRegistrationException {
         UserRegistration user = new UserRegistration();
         boolean result = user.firstName("Bhushan");
         Assertions.assertTrue(result);
     }
 
     @Test
-    void givenFirstName_WhileNotProper_ThrowsException() {
+    public void givenLastName_WhenProper_ReturnsMessage() throws UserRegistrationException {
+        UserRegistration user = new UserRegistration();
+        boolean result = user.lastName("Mahajan");
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void givenEmail_WhenProper_ReturnsMessage() throws UserRegistrationException {
+        UserRegistration user = new UserRegistration();
+        boolean result = user.emailId("bhushan@gmail.com");
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenProper_ReturnsMessage() throws UserRegistrationException {
+        UserRegistration user = new UserRegistration();
+        boolean result = user.phoneNumber("91 9999999999");
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenProper_ReturnsMessage() throws UserRegistrationException {
+        UserRegistration user = new UserRegistration();
+        boolean result = user.password("Bhushan@1234");
+        Assertions.assertTrue(result);
+    }
+
+
+    @Test
+    public void givenFirstName_WhileNotProper_ThrowsException() {
         UserRegistration user = new UserRegistration();
         try {
             boolean result = user.firstName("bhushan");
@@ -22,14 +51,7 @@ public class UserRegistrationTest {
     }
 
     @Test
-    void givenLastName_WhenProper_ReturnsMessage() throws UserRegistrationException {
-        UserRegistration user = new UserRegistration();
-        boolean result = user.lastName("Mahajan");
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    void givenLastname_WhenNotProper_ThrowsExcption() {
+    public void givenLastname_WhenNotProper_ThrowsException() {
         UserRegistration user = new UserRegistration();
         try {
             boolean result = user.lastName("mahajan");
@@ -40,17 +62,10 @@ public class UserRegistrationTest {
     }
 
     @Test
-    void givenEmail_WhenProper_ReturnsMessage() throws UserRegistrationException {
-        UserRegistration user = new UserRegistration();
-        boolean result = user.emailId("bhushan@gmail.com");
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    void givenEmail_WhenNotProper_ThrowsException() {
+    public void givenEmail_WhenNotProper_ThrowsException() {
         UserRegistration user = new UserRegistration();
         try {
-            boolean result = user.lastName("bhushan@mahajan@gmail.com");
+            boolean result = user.emailId("bhushan@mahajan@gmail.com");
             Assertions.assertFalse(result);
         } catch (UserRegistrationException e) {
             e.printStackTrace();
@@ -58,12 +73,45 @@ public class UserRegistrationTest {
     }
 
     @Test
-    void givenEmail_WhenNotProper_ThrowsException1() {
+    public void givenEmail_WhenNotProper_ThrowsException1() {
         UserRegistration user = new UserRegistration();
         try {
-            boolean result = user.lastName("bhushan.@mahajan@gmail.co.in");
+            boolean result = user.emailId("bhushan.@mahajan@gmail.co.in");
             Assertions.assertFalse(result);
         } catch (UserRegistrationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenNotProper_ThrowsException() {
+        UserRegistration user = new UserRegistration();
+        try {
+            boolean result = user.phoneNumber("9923154919");
+            Assertions.assertFalse(result);
+        } catch (UserRegistrationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenNotProper_ThrowsException1() {
+        UserRegistration user = new UserRegistration();
+        try {
+            boolean result = user.phoneNumber("99 231919");
+            Assertions.assertFalse(result);
+        } catch (UserRegistrationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenPassword_WhenNotProper_ThrowsException1()  {
+        UserRegistration user = new UserRegistration();
+        try {
+            boolean result = user.password("bhushan@12234");
+            Assertions.assertFalse(result);
+        } catch (UserRegistrationException | NullPointerException e) {
             e.printStackTrace();
         }
     }
